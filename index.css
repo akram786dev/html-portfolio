@@ -1,105 +1,140 @@
+/* =========================
+   RESET
+========================= */
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-/* hole body of the program */
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   background-color: #1e1e1e;
   font-family: sans-serif;
   color: #a0a0a0;
   line-height: 1.6;
-  display: flex;
+  min-height: 100vh;
 }
 
-/* main container */
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
 .main-container {
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 2fr;
-  gap: 30px;
-  background-color: #1e1e1e;
-  margin: 4px;
   display: flex;
   flex-direction: row;
-  margin-left: 125px;
-  margin-top: 20px;
-  height: 100%;
-  width: 100vw;
+  gap: 30px;
+
+  width: min(1400px, 95%);
+  margin: 20px auto;
+  align-items: flex-start;
 }
+
+
+/* =========================
+   LEFT BAR
+========================= */
 
 .left-bar {
   background-color: #2a2a2a;
-  height: 750px;
-  width: 500px;
+  width: 320px;
+  min-width: 280px;
+  min-height: 750px;
+  height: auto;
   border-radius: 10px;
+  padding-bottom: 30px;
+
+  position: sticky;
+  top: 20px;
 }
 
-.right-bar {
-  background-color: #2a2a2a;
-  height: 1600px;
-  width: 750px;
-  border-radius: 10px;
-}
 
-/* profile pic and names  */
-
-.left-bar img {
-  height: 120px;
-  width: 120px;
-  border-radius: 50%;
-  border: 1px solid #3a3a3a;
-}
+/* =========================
+   PROFILE
+========================= */
 
 .profile-pic {
   text-align: center;
   padding-top: 40px;
 }
 
+.profile-pic img {
+  height: 120px;
+  width: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #3a3a3a;
+}
+
 .profile-pic h3 {
   color: #e0e0e0;
+  margin-top: 10px;
 }
 
 .profile-pic h5 {
   color: #929925;
   background-color: #1e1e1e;
-  margin: 0px 140px;
+  width: fit-content;
+  margin: 5px auto 0;
+  padding: 3px 10px;
+  border-radius: 4px;
 }
 
-/* left-bar contact */
+
+/* =========================
+   CONTACT
+========================= */
 
 .contact {
   border-top: 2px solid #5c5a5a;
-  margin: 25px 25px;
+  margin: 25px;
+  padding-top: 5px;
 }
 
 .label {
   margin-top: 20px;
   font-size: 12px;
+  color: #a0a0a0;
 }
 
-.email a,.phone a,.location p {
+.email a,
+.phone a,
+.location p {
   text-decoration: none;
   color: #e0e0e0;
+  word-break: break-word;
 }
 
-/* left bar social media */
+.email a,
+.phone a {
+  font-size: 14px;
+}
+
+
+/* =========================
+   SOCIAL MEDIA
+========================= */
 
 .social-media {
   border-top: 2px solid #5c5a5a;
   display: flex;
   justify-content: center;
-  margin: 25px 25px;
+  gap: 25px;
+  margin: 25px;
+  padding-top: 20px;
 }
 
 .icon {
-  height: 24px;
-  width: 24px;
+  height: 30px;
+  width: 30px;
+
   filter: grayscale(1) invert(0.7);
-  transition: filter 0.3s ease;
-  margin-top: 20px;
+  transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .icon img {
@@ -109,44 +144,64 @@ body {
 
 .icon:hover {
   filter: grayscale(0) invert(0);
-  scale: calc(1.2);
+  transform: scale(1.2);
 }
 
-/* right bar */
 
-/*  right bar about */
+/* =========================
+   RIGHT BAR
+========================= */
 
-/* Navigation ko  */
-#navigation{
-    border-bottom: 2px solid #3a3a3a;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
+.right-bar {
+  background-color: #2a2a2a;
+  width: 100%;
+  min-height: 1600px;
+  height: auto;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-nav{
-    display: flex;
-    justify-content: flex-end;
-    gap: 20px;
+
+/* =========================
+   NAVIGATION
+========================= */
+
+#navigation {
+  border-bottom: 2px solid #3a3a3a;
+  margin-bottom: 10px;
+  padding: 20px;
 }
 
-nav a{
-    text-decoration: none;
-    color: #a0a0a0;
-    font-weight: 500;
-    transition: color 0.3s ease;
+nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-.active, nav a:hover{
-    color: #FFBF00;
+nav a {
+  text-decoration: none;
+  color: #a0a0a0;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-/* about me */
+nav a:hover,
+nav a.active {
+  color: #ffbf00;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
 .about {
   font-size: 15px;
   color: #e0e0e0;
-  margin-top: 50px;
-  margin-left: 20px;
+  margin: 50px 20px 0;
 }
+
 .line {
   border: 2px solid yellow;
   height: 2px;
@@ -156,223 +211,477 @@ nav a{
 
 .about-word {
   text-align: justify;
-  margin-right: 20px;
-  margin-top: 20px;
-  font-size: 12px;
+  margin: 20px 20px 0 0;
+  font-size: 14px;
 }
 
-/*  right bar skill */
+
+/* =========================
+   SKILLS
+========================= */
+
 .skills {
   font-size: 15px;
   color: #e0e0e0;
-  margin-top: 20px;
-  margin-left: 20px;
+  margin: 40px 20px 0;
+}
+
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 30px;
 }
 
 .item {
   height: 130px;
   width: 130px;
+
   background-color: #1e1e1e;
   border-radius: 10px;
-  box-shadow: 0px 0px 2px 1px rgb(93, 90, 90);
-}
 
-.box {
-  gap:12px;
+  box-shadow: 0 0 2px 1px rgb(93, 90, 90);
+
   display: flex;
-  flex-direction: row;
-  margin-top: 30px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .item h2 {
   font-size: 12px;
   text-align: center;
-  margin-bottom: 20px;
-}
-
-.box img {
-  height: 80px;
-  width: 80px;
-  margin-top: 30px;
-  margin-left: 40px;
+  margin-top: 10px;
 }
 
 .item img {
   height: 48px;
   width: 48px;
-  filter: brightness(10) saturate(100%) invert(82%) sepia(99%) saturate(3573%)
-    hue-rotate(10deg) brightness(104%) contrast(97%);
+
+  filter: brightness(10) saturate(100%) invert(82%) sepia(99%)
+    saturate(3573%) hue-rotate(10deg) brightness(104%) contrast(97%);
 }
 
 .item:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 0px 5px 8px rgba(0, 0, 0, 0.3);
+  transform: scale(1.08);
+  box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* education  */
 
-.education{
-  margin-top: 30px;
-  margin-left: 20px;
+/* =========================
+   EDUCATION
+========================= */
+
+#college , #high-school , #school{
+  width: 70vw;
+}
+.education {
+  margin: 50px 20px 0;
+  width: 100vw;
   position: relative;
 }
-.headding{
+
+.headding {
   font-size: 20px;
   font-family: sans-serif;
   color: #e0e0e0;
 }
 
-.circle{
- margin-top: 50px;
- margin-left: 5.5px;
+.content {
+  position: relative;
+  margin-top: 30px;
+  padding-left: 35px;
 }
 
-.vertical-line{
+.vertical-line {
   background-color: rgba(50, 49, 49, 0.984);
-  height: 270px;
-  width: 10px;
+  width: 8px;
+  height: calc(100% - 20px);
+
   position: absolute;
-  margin-left: 3px;
-  margin-top: -15px;
+  left: 5px;
+  top: 10px;
+
   border-radius: 30px;
 }
 
-.circleone{
-  background-color: rgb(12, 12, 20);
-  height: 5px;
-  width: 5px;
-  border-radius: 50%;
-  box-shadow: 0px 0px 0px 5px rgb(228, 228, 37);
-  /* for z index */
+.circle {
   position: relative;
-  z-index: 5;
-  margin-top: 10px;
 }
 
-.circletwo{
-  background-color: rgb(11, 15, 11);
-  height: 5px;
-  width: 5px;
-  
-}
-
-.circlethree{
-  background-color: rgb(15, 3, 3);
-  height: 5px;
-  width: 5px;
-  
-}
-.circletwo,.circlethree{
-  margin-top: 100px;
+.circleone,
+.circletwo,
+.circlethree {
   position: relative;
-  z-index: 5;
+
+  width: 12px;
+  height: 12px;
+
+  background-color: #0c0c14;
   border-radius: 50%;
-  box-shadow: 0px 0px 0px 5px rgb(228, 228, 37);
+
+  box-shadow: 0 0 0 5px rgb(228, 228, 37);
+
+  margin-bottom: 100px;
 }
 
-#college{
-  height: 300px;
-  width: 660px;
-  text-align: justify;
-  margin: -8px 0px 0px 40px;
-  position: absolute;
-  font-size: 15px;
-}
-#high-school{
-  height: 300px;
-  width: 660px;
-  text-align: justify;
-  margin: -8px 0px 0px 40px;
-  position: absolute;
-  font-size: 15px;
+.circleone h3,
+.circletwo h3,
+.circlethree h3 {
+  position: relative;
+
+  width: 100%;
+  max-width: 660px;
+
+  margin-left: 30px;
+  margin-top: -8px;
+
+  font-size: 14px;
+  font-weight: normal;
+  color: #e0e0e0;
 }
 
-#school{
-  width: 660px;
-  text-align: justify;
-  margin: -8px 0px 0px 40px;
-  position: absolute;
-  font-size: 15px;
-}
 
-/* .portfolio */
-.portfolio{
-  margin: 70px 0px 0px 20px;
+/* =========================
+   PORTFOLIO
+========================= */
+
+.portfolio {
+  margin: 70px 20px 40px;
   color: #e0e0e0;
   font-size: 18px;
 }
-.line{
-  border: 2px solid yellow;
-  height: 2px;
-  width: 75px;
-  margin-top: 12px;
-}
 
-
-.grid{
+.grid {
   margin-top: 24px;
+
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  /* grid-template-rows: 1fr 1fr; */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
   gap: 20px;
-  margin-right: 100px;
 }
 
-.grid img{
+.card {
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  border: 1px solid #3a3a3a;
+
+  overflow: hidden;
+
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+
+  padding-bottom: 15px;
+}
+
+.card img {
+  width: 100%;
   height: 180px;
-    width: 400px;
-    object-fit: cover;
+
+  object-fit: cover;
 }
 
-.card span{
-    background-color: rgba(255, 191, 0, 0.1);
-    color: #FFBF00;
-    padding: 4px 8px;
-    border-radius: 5px;
-    font-size: 0.75rem;
-    margin-right: 5px;
+.card h3 {
+  font-size: 16px;
+  margin: 15px 15px 5px;
+  color: #e0e0e0;
 }
 
-.card{
-    background-color: #1e1e1e;
-    border-radius: 12px;
-    border: 1px solid #3a3a3a;
-    overflow: hidden;
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-    width: 350px;
+.card p {
+  font-size: 13px;
+  margin: 0 15px 15px;
 }
 
-.card:hover{
-    transform: translateY(-10px);
-    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+.card span {
+  display: inline-block;
+
+  background-color: rgba(255, 191, 0, 0.1);
+  color: #ffbf00;
+
+  padding: 4px 8px;
+
+  border-radius: 5px;
+
+  font-size: 0.75rem;
+
+  margin-left: 15px;
+  margin-right: 0;
 }
 
-@media screen and (max-width:1200px) {
-    .main-container{
-        grid-template-columns: 1fr;
-        padding: 20px;
-    }
-
-    .sidebar{
-        position: static;
-        height: auto;
-    }
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
 }
 
-@media screen and (max-width:750px) {
-    .project-container{
-        grid-template-columns: 1fr;
-    }
 
-    #navigation nav {
-        /* Adjust nav for smaller screens */
-        justify-content: center;
-        flex-wrap: wrap;
-    }
+/* ==================================================
+   TABLET
+   1200px and below
+================================================== */
 
-    .sidebar{
-        display: flex;
-        justify-content: center;
-        gap: 40px;
-    }
+@media screen and (max-width: 1200px) {
+
+  .main-container {
+    width: 94%;
+    gap: 20px;
+  }
+
+  .left-bar {
+    width: 280px;
+    min-width: 250px;
+  }
+
+  .right-bar {
+    width: 100%;
+  }
+
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+
+/* ==================================================
+   TABLET / SMALL LAPTOP
+   900px and below
+================================================== */
+
+@media screen and (max-width: 900px) {
+
+  .main-container {
+    flex-direction: column;
+    width: 94%;
+  }
+
+  .left-bar {
+    width: 100%;
+    min-width: 0;
+    min-height: auto;
+
+    position: static;
+  }
+
+  .right-bar {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .profile-pic {
+    padding-top: 25px;
+  }
+
+  .contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 25px;
+  }
+
+  .location {
+    grid-column: 1 / -1;
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+}
+
+
+/* ==================================================
+   MOBILE
+   600px and below
+================================================== */
+
+@media screen and (max-width: 600px) {
+
+  .main-container {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+
+    gap: 15px;
+  }
+
+  .left-bar,
+  .right-bar {
+    border-radius: 8px;
+  }
+
+
+  /* Profile */
+
+  .profile-pic {
+    padding-top: 25px;
+  }
+
+  .profile-pic img {
+    width: 100px;
+    height: 100px;
+  }
+
+
+  /* Contact */
+
+  .contact {
+    display: block;
+    margin: 20px;
+  }
+
+  .label {
+    margin-top: 15px;
+  }
+
+  .email a,
+  .phone a,
+  .location p {
+    font-size: 13px;
+  }
+
+
+  /* Navigation */
+
+  #navigation {
+    padding: 15px 10px;
+  }
+
+  nav {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  nav a {
+    font-size: 13px;
+    margin: 0;
+    padding: 5px;
+  }
+
+
+  /* About */
+
+  .about {
+    margin: 30px 15px 0;
+  }
+
+  .about-word {
+    font-size: 13px;
+    text-align: left;
+    margin-right: 0;
+  }
+
+
+  /* Skills */
+
+  .skills {
+    margin: 35px 15px 0;
+  }
+
+  .box {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .item {
+    width: 110px;
+    height: 110px;
+  }
+
+  .item img {
+    width: 42px;
+    height: 42px;
+  }
+
+
+  /* Education */
+
+  .education {
+    margin: 40px 15px 0;
+  }
+
+  .content {
+    padding-left: 30px;
+  }
+
+  .circleone,
+  .circletwo,
+  .circlethree {
+    margin-bottom: 90px;
+  }
+
+  .circleone h3,
+  .circletwo h3,
+  .circlethree h3 {
+    width: calc(100vw - 100px);
+    margin-left: 25px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+
+  /* Portfolio */
+
+  .portfolio {
+    margin: 50px 15px 30px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .card img {
+    height: 170px;
+  }
+
+}
+
+
+/* ==================================================
+   VERY SMALL MOBILE
+   400px and below
+================================================== */
+
+@media screen and (max-width: 400px) {
+
+  .main-container {
+    padding: 5px;
+  }
+
+  nav {
+    gap: 5px;
+  }
+
+  nav a {
+    font-size: 12px;
+  }
+
+  .box {
+    gap: 10px;
+  }
+
+  .item {
+    width: 95px;
+    height: 100px;
+  }
+
+  .item img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .item h2 {
+    font-size: 11px;
+  }
+
+  .circleone h3,
+  .circletwo h3,
+  .circlethree h3 {
+    font-size: 11px;
+  }
+
 }
